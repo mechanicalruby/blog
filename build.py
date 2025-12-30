@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 import glob
 import shutil
@@ -111,5 +113,3 @@ for filename in glob.glob(input_path + blog_path + '*.md'):
 
     if(compile_blog_page_markdown(Path(filename), output_path + blog_path + page_name + "/index.html")):
         print(Path(filename).name + " -> " + output_path + blog_path + page_name + "/index.html")
-
-exit(0)
