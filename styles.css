@@ -1,0 +1,111 @@
+@charset "utf-8";
+
+html {
+    background-color: #fff;
+    color: #333;
+    font-family: "Arial", "sans-serif";
+    font-size: 16px;
+}
+
+body {
+    max-width: 640px;
+    line-height: 1.4;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #bbb;
+    width: 100%;
+}
+
+ul {
+    list-style-type: circle;
+}
+
+a {
+    text-decoration-color: #bbb;
+    color: #333;
+}
+
+code {
+    background-color: #eee;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    padding: 0 0.25em;
+}
+
+blockquote {
+    background-color: #eee;
+    border-left: 5px solid #777;
+    padding: 0 1em;
+    margin: 0;
+}
+
+.header {
+    margin: 0;
+    padding: 0;
+}
+
+.footer {
+    font-size: 14px;
+}
+
+.header a {
+    text-decoration: none;
+}
+
+.header ul,
+.footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.header li,
+.footer li {
+    float: left;
+    padding-right: 1em;
+}
+
+.blog-header {
+    margin-bottom: 0;
+}
+
+.blog-timestamp {
+    margin: 0;
+}
+
+@media only all and (prefers-color-scheme: dark) {
+    html {
+        background-color: #111;
+        color: #bbb;
+    }
+    hr {
+        border-top: 1px solid #444;
+    }
+    a {
+        color: #bbb;
+    }
+    code {
+        background-color: #222;
+        border: 1px solid #333;
+    }
+    blockquote {
+        background-color: #222;
+    }
+}

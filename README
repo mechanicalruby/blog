@@ -1,0 +1,14 @@
+Source code for my blog.
+
+BUILDING
+=========
+The generator is a Python script. It's not intended for general purpose
+use cases, but you're free to play with it.
+
+LICENSE
+=========
+The LICENSE file in this repository licenses the code used to build
+the site's contents.
+
+The text content of the site is licensed as CC BY-SA 4.0:
+https://creativecommons.org/licenses/by-sa/4.0/

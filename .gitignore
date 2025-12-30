@@ -1,0 +1,5 @@
+# output directory
+output/
+# platform-specific build scripts
+rbuild.bat
+rserver.bat
