@@ -119,7 +119,7 @@ def compile_rss_feed(output_file):
     for filename in glob.glob(input_path + blog_path + '*.md'):
         item = SubElement(channel, "item")
         item_title = SubElement(item, "title")
-        item_date = SubElement(item, "pubdate")
+        item_date = SubElement(item, "pubDate")
         item_link = SubElement(item, "link")
         item_guid = SubElement(item, "guid")
         item_desc = SubElement(item, "description")
@@ -131,12 +131,12 @@ def compile_rss_feed(output_file):
         item_title.text = obj["title"]
         item_link.text = "https://mechanicalruby.com/" + blog_path + Path(filename).stem + "/"
         item_guid.text = item_link.text
-        item_desc.text = f"<![CDATA[{rendered_html}]]>"
+        item_desc.text = rendered_html
 
         # handle the date. format example: January 1, 2025
         dt = datetime.datetime.strptime(obj["date"], "%B %d, %Y") # %H:%M for 24 hr time after
-        output_date = dt.strftime("%a, %d %b %Y %H:%M:%S")
-        item_date.text = output_date
+        output_date = dt.strftime("%a, %d %b %Y %H:%M:%S PST")
+        item_date.text = output_date.strip()
 
     with open(output_file,'wb') as feed:
         indent(root, "    ")
