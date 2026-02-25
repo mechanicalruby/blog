@@ -111,7 +111,7 @@ def compile_rss_feed(output_file):
     # set the image's properties
     image_link.text = "https://mechanicalruby.com"
     image_title.text = "MechanicalRuby"
-    image_url.text = "https://mechanicalruby.com/icon.png"
+    image_url.text = "https://mechanicalruby.com/favicon.png"
     image_height.text = "32"
     image_width.text = "32"
 
@@ -186,7 +186,7 @@ for filename in glob.glob(input_path + blog_path + '*.md'):
 # stylesheet
 shutil.copyfile("styles.css", output_path + "styles.css")
 # favicon
-shutil.copyfile("icon.png", output_path + "icon.png")
+shutil.copyfile("favicon.png", output_path + "favicon.png")
 # 404
 shutil.copyfile("404.html", output_path + "404.html")
 # rss
