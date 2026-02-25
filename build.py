@@ -186,7 +186,7 @@ for filename in glob.glob(input_path + blog_path + '*.md'):
 # stylesheet
 shutil.copyfile("styles.css", output_path + "styles.css")
 # favicon
-shutil.copyfile("favicon.png", output_path + "favicon.png")
+shutil.copyfile("icon.png", output_path + "icon.png")
 # 404
 shutil.copyfile("404.html", output_path + "404.html")
 # rss
