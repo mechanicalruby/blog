@@ -44,12 +44,14 @@ def compile_blog_page_markdown(input_file, output_file):
     obj = frontmatter.load(input_file)
     rendered_html = mistune.html(obj.content)
 
+    permalink = "https://mechanicalruby.com/" + blog_path + str(input_file.stem)
+
     # string literal... sorry for the indentation
     wrapped_html = f"""
 <title>{obj['title']} - MechanicalRuby</title>
 
 <main class="main">\n
-<h1 class="blog-header">{obj['title']}</h1>\n
+<h1 class="blog-header"><a href="{permalink}" title="permalink to {obj['title']}">{obj['title']}</a></h1>\n
 <p class="blog-timestamp">published <time>{obj['date']}</time></p>\n
 {rendered_html}\n
 <a href="/"> &lt&lt Back to main page</a>\n
