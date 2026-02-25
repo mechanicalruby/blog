@@ -103,7 +103,7 @@ def compile_rss_feed(output_file):
     language.text = "en-us"
     build_date.text = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %z")
     atom_link.attrib = {
-        "href": "http://mechanicalruby.com/rss.xml",
+        "href": "https://mechanicalruby.com/rss.xml",
         "rel":  "self",
         "type": "application/rss+xml"
     }
