@@ -111,7 +111,7 @@ def compile_rss_feed(output_file):
     # set the image's properties
     image_link.text = "https://mechanicalruby.com"
     image_title.text = "MechanicalRuby"
-    image_url.text = "https://mechanicalruby.com/favicon.png"
+    image_url.text = "https://mechanicalruby.com/icon.png"
     image_height.text = "32"
     image_width.text = "32"
 
