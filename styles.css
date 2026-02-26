@@ -68,6 +68,10 @@ blockquote {
     text-decoration: none;
 }
 
+.header nav {
+    float: right;
+}
+
 .header ul,
 .footer ul {
     list-style-type: none;
