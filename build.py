@@ -148,50 +148,56 @@ def compile_rss_feed(output_file):
 
 # now we generate.
 
-# create an output directory
-if not os.path.exists(output_path):
-    print("creating output dir")
-    os.makedirs(output_path)
+def generate_site():
+    # create an output directory
+    if not os.path.exists(output_path):
+        print("creating output dir")
+        os.makedirs(output_path)
 
-# create a blog subdirectory
-if not os.path.exists(output_path + blog_path):
-    print("creating blog dir")
-    os.makedirs(output_path + blog_path)
+    # create a blog subdirectory
+    if not os.path.exists(output_path + blog_path):
+        print("creating blog dir")
+        os.makedirs(output_path + blog_path)
 
-# --- base files ---
-print("! compiling main site pages")
-for filename in glob.glob(input_path + '*.html'):
-    page_name = Path(filename).stem
-    
-    if page_name == 'index':
-        compile_base_page(input_path + "index.html", output_path + "index.html")
-        continue
+    # --- base files ---
+    print("! compiling main site pages")
+    for filename in glob.glob(input_path + '*.html'):
+        page_name = Path(filename).stem
+        
+        if page_name == 'index':
+            compile_base_page(input_path + "index.html", output_path + "index.html")
+            continue
 
-    if not os.path.exists(output_path + page_name):
-        os.makedirs(output_path + page_name)
+        if not os.path.exists(output_path + page_name):
+            os.makedirs(output_path + page_name)
 
-    if(compile_base_page(Path(filename), output_path + page_name + "/index.html")):
-        print(Path(filename).name + " -> " + output_path + page_name + "/index.html")
+        if(compile_base_page(Path(filename), output_path + page_name + "/index.html")):
+            print(Path(filename).name + " -> " + output_path + page_name + "/index.html")
 
-# --- markdown blog files ---
-print("! compiling markdown blog posts")
-for filename in glob.glob(input_path + blog_path + '*.md'):
-    page_name = Path(filename).stem
+    # --- markdown blog files ---
+    print("! compiling markdown blog posts")
+    for filename in glob.glob(input_path + blog_path + '*.md'):
+        page_name = Path(filename).stem
 
-    if not os.path.exists(output_path + blog_path + page_name):
-        os.makedirs(output_path + blog_path + page_name)
+        if not os.path.exists(output_path + blog_path + page_name):
+            os.makedirs(output_path + blog_path + page_name)
 
-    if(compile_blog_page_markdown(Path(filename), output_path + blog_path + page_name + "/index.html")):
-        print(Path(filename).name + " -> " + output_path + blog_path + page_name + "/index.html")
+        if(compile_blog_page_markdown(Path(filename), output_path + blog_path + page_name + "/index.html")):
+            print(Path(filename).name + " -> " + output_path + blog_path + page_name + "/index.html")
 
-# --- misc files ---
-# stylesheet
-shutil.copyfile("styles.css", output_path + "styles.css")
-# favicon
-shutil.copyfile("favicon.png", output_path + "favicon.png")
-# 404
-shutil.copyfile("404.html", output_path + "404.html")
-# rss
-print("! compiling rss feed")
-if(compile_rss_feed(output_path + "rss.xml")):
-    print("rss -> " + output_path + "rss.xml")
+    # --- misc files ---
+    # stylesheet
+    shutil.copyfile("styles.css", output_path + "styles.css")
+    # favicon
+    shutil.copyfile("favicon.png", output_path + "favicon.png")
+    # 404
+    shutil.copyfile("404.html", output_path + "404.html")
+    # rss
+    print("! compiling rss feed")
+    if(compile_rss_feed(output_path + "rss.xml")):
+        print("rss -> " + output_path + "rss.xml")
+
+    return True
+
+if __name__ == '__main__':
+    generate_site()
