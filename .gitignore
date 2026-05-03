@@ -1,3 +1,5 @@
+# pycache
+__pycache__/
 # output directory
 output/
 # platform-specific build scripts
