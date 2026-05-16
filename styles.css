@@ -3,7 +3,7 @@
 html {
     background-color: #fff;
     color: #333;
-    font-family: "Arial", "sans-serif";
+    font-family: Arial, sans-serif;
     font-size: 16px;
 }
 
@@ -14,22 +14,13 @@ body {
     padding: 2em;
 }
 
-h1 {
-    font-size: 28px;
-}
-
-h2 {
-    font-size: 24px;
-}
-
-h3 {
-    font-size: 20px;
-}
+h1 { font-size: 28px; }
+h2 { font-size: 24px; }
+h3 { font-size: 20px; }
 
 hr {
     border: none;
     border-top: 1px solid #bbb;
-    width: 100%;
 }
 
 ul {
@@ -56,7 +47,9 @@ blockquote {
     margin: 0;
 }
 
-.header {
+.header,
+.header ul,
+.footer ul {
     margin: 0;
     padding: 0;
 }
@@ -76,8 +69,6 @@ blockquote {
 .header ul,
 .footer ul {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
     overflow: hidden;
 }
 
@@ -88,6 +79,7 @@ blockquote {
 }
 
 .blog-header {
+    text-decoration: none;
     margin-bottom: 0;
 }
 
@@ -96,21 +88,9 @@ blockquote {
 }
 
 @media only all and (prefers-color-scheme: dark) {
-    html {
-        background-color: #111;
-        color: #bbb;
-    }
-    hr {
-        border-top: 1px solid #444;
-    }
-    a {
-        color: #bbb;
-    }
-    code {
-        background-color: #222;
-        border: 1px solid #333;
-    }
-    blockquote {
-        background-color: #222;
-    }
+    html { background-color: #111; color: #bbb; }
+    hr { border-top: 1px solid #444; }
+    a { color: #bbb; }
+    code, blockquote { background-color: #222; }
+    code { border-color: #333; }
 }
