@@ -2,7 +2,7 @@
 
 html {
     background-color: #fff;
-    color: #444;
+    color: #333;
     font-family: Arial, sans-serif;
     font-size: 18px;
 }
@@ -23,11 +23,8 @@ hr {
     border-top: 1px solid #bbb;
 }
 
-ul {
-    list-style-type: circle;
-}
-
-a {
+a,u {
+    text-decoration-thickness: 1px;
     text-decoration-color: #bbb;
     color: #333;
 }
@@ -88,9 +85,9 @@ blockquote {
 }
 
 @media only all and (prefers-color-scheme: dark) {
-    html { background-color: #111; color: #bbb; }
+    html { background-color: #111; color: #fff; }
     hr { border-top: 1px solid #444; }
-    a { color: #bbb; }
+    a,u { color: #fff; text-decoration-color: #888; }
     code, blockquote { background-color: #222; }
     code { border-color: #333; }
 }
