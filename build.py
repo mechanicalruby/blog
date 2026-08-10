@@ -7,12 +7,44 @@ import io
 import datetime
 from pathlib import Path
 import mistune, frontmatter
+from mistune import HTMLRenderer
+from mistune.toc import add_toc_hook, render_toc_ul
 from xml.etree.ElementTree import Element, SubElement, tostring, indent
+
+from pygments import highlight
+from pygments.lexers import get_lexer_by_name
+from pygments.formatters import HtmlFormatter
+from pygments.styles import get_style_by_name
 
 # build configuration
 input_path = "base/"
 output_path = "output/"
 blog_path = "blog/"
+
+# define post renderer
+# from https://gist.github.com/JmPotato/9b777f8a958b24a44d65
+class PostRenderer(HTMLRenderer):
+    def block_code(self, code, info):
+        if info:
+            lexer = get_lexer_by_name(info, stripall=True)
+        else:
+            return "<pre><code>%s</code></pre>" % code.strip()
+
+        formatter = HtmlFormatter(noclasses=False, linenos=False, nowrap=True)
+
+        return '<pre><code>%s</code></pre>' % highlight(code, lexer, formatter)
+
+    def autolink(self, link, is_email):
+        if is_email:
+            mailto = "".join(['&#%d;' % ord(letter) for letter in "mailto:"])
+            email = "".join(['&#%d;' % ord(letter) for letter in link])
+            url = mailto + email
+            return '<a href="%(url)s">%(link)s</a>' % {'url': url, 'link': email}
+
+        title = link.replace('http://', '').replace('https://', '')
+        if len(title) > 30:
+            title = title[:24] + "..."
+        return '<a href="%s">%s</a>' % (link, title)
 
 # func: create normal page with generic header/footer
 def compile_base_page(input_file, output_file):
@@ -40,13 +72,25 @@ def compile_blog_page_markdown(input_file, output_file):
         print('[ERROR] No frontmatter, skipping post ' + str(input_file))
         return False
 
-    # now get all the stuff we need
+    # obtain text content of post
     obj = frontmatter.load(input_file)
-    rendered_html = mistune.html(obj.content)
+
+    # define header token format extraction/conversion
+    def raw_id(token, index):
+        header = token.get("text", "")
+        header = header.strip()
+        header = header.lower()
+        header = header.replace(" ", "-")
+        header = header.replace("'", "")
+        return header
+
+    # create parser and generate html
+    md = mistune.create_markdown(renderer=PostRenderer())
+    add_toc_hook(md, heading_id=raw_id)
+    rendered_html = md(obj.content)
 
     permalink = "https://mechanicalruby.com/" + blog_path + str(input_file.stem)
 
-    # string literal... sorry for the indentation
     wrapped_html = f"""
 <title>{obj['title']} - MechanicalRuby</title>
 
@@ -55,8 +99,7 @@ def compile_blog_page_markdown(input_file, output_file):
 <p class="blog-timestamp">published <time>{obj['date']}</time></p>\n
 {rendered_html}\n
 <a href="/"> &lt&lt Back to main page</a>\n
-</main>
-        """
+</main>"""
 
     with open(output_file, "w", encoding="utf-8") as final_page:
         with open("t_header.html", "r", encoding="utf-8") as f:
