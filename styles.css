@@ -1,32 +1,40 @@
 @charset "utf-8";
 
 html {
-    background-color: #fff;
-    color: #333;
-    font-family: Arial, sans-serif;
+    background-color: #F7F7F7;
+    color: #000;
+    font-family: system-ui, sans-serif;
     font-size: 18px;
 }
 
 body {
-    max-width: 640px;
+    max-width: 540px;
     line-height: 1.5;
     margin: 0 auto;
-    padding: 2em;
+    padding: 1em 2em;
 }
 
-h1 { font-size: 28px; }
-h2 { font-size: 24px; }
-h3 { font-size: 20px; }
+h1 { font-size: 28px }
+h2 { font-size: 20px }
+h3 { font-size: 18px }
 
 hr {
     border: none;
     border-top: 1px solid #bbb;
 }
 
-a,u {
-    text-decoration-thickness: 1px;
-    text-decoration-color: #bbb;
-    color: #333;
+a {
+    text-decoration: none;
+    color: #325CC0;
+}
+
+u { color: #AA3731 }
+
+pre code {
+    display: block;
+    white-space: pre-wrap;
+    font-size: 16px;
+    padding: 0.5em 0.75em;
 }
 
 code {
@@ -37,8 +45,8 @@ code {
 }
 
 blockquote {
-    background-color: #eee;
-    border-left: 5px solid #777;
+    background-color: #F0F0F0;
+    border-left: 5px solid #999;
     border-radius: 4px;
     padding: 0 1em;
     margin: 0;
@@ -49,22 +57,6 @@ blockquote {
 .footer ul {
     margin: 0;
     padding: 0;
-}
-
-.footer {
-    font-size: 14px;
-}
-
-.header a {
-    text-decoration: none;
-}
-
-.header nav {
-    float: right;
-}
-
-.header ul,
-.footer ul {
     list-style-type: none;
     overflow: hidden;
 }
@@ -80,14 +72,24 @@ blockquote {
     margin-bottom: 0;
 }
 
-.blog-timestamp {
-    margin: 0;
-}
+.blog-timestamp { margin: 0 }
+
+.cm { color: #AA3731 }
+.nf { color: #325CC0 }
+.s { color: #448C27 }
+.mi, .mh { color: #7A3E9D }
+.se { color: #777 }
 
 @media only all and (prefers-color-scheme: dark) {
-    html { background-color: #111; color: #fff; }
-    hr { border-top: 1px solid #444; }
-    a,u { color: #fff; text-decoration-color: #888; }
-    code, blockquote { background-color: #222; }
-    code { border-color: #333; }
+    html { background-color: #0E1415; color: #CECECE; }
+    hr { border-top: 1px solid #FFFFFF44; }
+    a { color: #71ADE7 }
+    u { color: #DFDF8E }
+    code, blockquote { background-color: #FFFFFF10 }
+    code { border-color: #333 }
+    .cm { color: #DFDF8E }
+    .nf { color: #71ADE7 }
+    .s { color: #95CB82 }
+    .mi, .mh { color: #CC8BC9 }
+    .se { color: #CC8BC9; background-color: #FFFFFF10 }
 }
