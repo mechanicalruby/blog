@@ -74,7 +74,7 @@ blockquote {
 
 .blog-timestamp { margin: 0 }
 
-.cm { color: #AA3731 }
+.c,.cm { color: #AA3731 }
 .nf { color: #325CC0 }
 .s { color: #448C27 }
 .mi, .mh { color: #7A3E9D }
@@ -87,7 +87,7 @@ blockquote {
     u { color: #DFDF8E }
     code, blockquote { background-color: #FFFFFF10 }
     code { border-color: #333 }
-    .cm { color: #DFDF8E }
+    .c,.cm { color: #DFDF8E }
     .nf { color: #71ADE7 }
     .s { color: #95CB82 }
     .mi, .mh { color: #CC8BC9 }
